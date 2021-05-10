@@ -1,0 +1,51 @@
+### Activation
+POST http://localhost:8080/api/jwt/activate
+Content-Type: application/json
+
+{
+  "ticket": "Th15Is4n4ct1v4t10nTicket!!",
+  "password": "1Q2w3e4r5t!"
+}
+
+
+### Login
+POST http://localhost:8080/api/jwt/login
+Content-Type: application/json
+
+{
+  "username": "langelog",
+  "password": "1Q2w3e4r5t!"
+}
+
+> {%
+     client.global.set("token", response.body.token)
+ %}
+
+### Create Normal User
+POST http://localhost:8080/api/jwt/create
+Content-Type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "username": "testingUser",
+  "password": "Temporal123!",
+  "role": 2
+}
+
+### Activate normal user
+POST http://localhost:8080/api/jwt/activate
+Content-Type: application/json
+
+{
+  "ticket": "c14130fe-d8ee-4ef4-a2a4-d3907134467f",
+  "password": "1Q2w3e4r5t!"
+}
+
+### Login as normal user
+POST http://localhost:8080/api/jwt/login
+Content-Type: application/json
+
+{
+  "username": "testingUser",
+  "password": "1Q2w3e4r5t!"
+}
